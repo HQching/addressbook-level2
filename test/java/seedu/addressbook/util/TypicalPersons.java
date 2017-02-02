@@ -19,11 +19,11 @@ public class TypicalPersons {
     public TypicalPersons() {
         try {
             amy = new Person(new Name("Amy Buck"), new Phone("91119111", false), new Email("ab@gmail.com", false),
-                    new Address("1 Clementi Road", false), new UniqueTagList());
+                    new Address("854, 1 Clementi Road, #06-766, 899320", false), new UniqueTagList());
             bill = new Person(new Name("Bill Clint"), new Phone("92229222", false), new Email("bc@gmail.com", false),
-                    new Address("2 Clementi Road", false), new UniqueTagList());
+                    new Address("374, 2 Clementi Road, #44-320, 389064", false), new UniqueTagList());
             candy = new Person(new Name("Candy Destiny"), new Phone("93339333", false),
-                    new Email("cd@gmail.com", false), new Address("3 Clementi Road", false), new UniqueTagList());
+                    new Email("cd@gmail.com", false), new Address("345, 3 Clementi Road, #10-12, 354890", false), new UniqueTagList());
         } catch (IllegalValueException e) {
             e.printStackTrace();
             assert false : "not possible";
