@@ -12,14 +12,13 @@ import seedu.addressbook.data.exception.IllegalValueException;
 public class Address {
 
     private class Block {
-
         public static final String EXAMPLE = "123";
         public static final String MESSAGE_BLOCK_CONSTRAINTS = "Address blocks should only contain numbers";
-        private static final String BLOCK_VALIDATION_REGEX = "\\d+";
+        public static final String BLOCK_VALIDATION_REGEX = "\\d+";
         private String number;
 
         public Block(String blkNum) throws IllegalValueException {
-            if (!isValidBlock(blkNum)) {
+            if (!this.isValidBlock(blkNum)) {
                 throw new IllegalValueException(MESSAGE_BLOCK_CONSTRAINTS);
             }
             number = blkNum;
@@ -32,17 +31,18 @@ public class Address {
         public String getBlock() {
             return number;
         }
+
     }
 
     private class Street {
 
         public static final String EXAMPLE = "Clementi Ave 3";
         public static final String MESSAGE_STREET_CONSTRAINTS = "Address streets should only alphanumeric characters";
-        private static final String STREET_VALIDATION_REGEX = ".+";
+        public static final String STREET_VALIDATION_REGEX = ".+";
         private String name;
 
         public Street(String streetName) throws IllegalValueException {
-            if (!isValidStreet(streetName)) {
+            if (!this.isValidStreet(streetName)) {
                 throw new IllegalValueException(MESSAGE_STREET_CONSTRAINTS);
             }
             name = streetName;
@@ -65,7 +65,7 @@ public class Address {
         private String value;
 
         public Unit(String unitNum) throws IllegalValueException {
-            if (!isValidUnit(unitNum)) {
+            if (!this.isValidUnit(unitNum)) {
                 throw new IllegalValueException(MESSAGE_UNIT_CONSTRAINTS);
             }
             value = unitNum;
@@ -88,7 +88,7 @@ public class Address {
         private String numbers;
 
         public PostalCode(String value) throws IllegalValueException {
-            if (!isValidPostalCode(value)) {
+            if (!this.isValidPostalCode(value)) {
                 throw new IllegalValueException(MESSAGE_POSTAL_CODE_CONSTRAINTS);
             }
             numbers = value;
@@ -103,7 +103,8 @@ public class Address {
         }
     }
 
-    public static final String EXAMPLE = Block.EXAMPLE + Street.EXAMPLE + Unit.EXAMPLE + PostalCode.EXAMPLE;
+    public static final String EXAMPLE = Block.EXAMPLE + ", " + Street.EXAMPLE + ", " + Unit.EXAMPLE + ","
+            + PostalCode.EXAMPLE;
     public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses must have format BLOCK, STREET, UNIT, POSTAL_CODE";
     public static final Pattern ADDRESS_VALIDATION_REGEX = // ", " comma and
                                                            // whitespace is
@@ -130,14 +131,10 @@ public class Address {
         }
         this.isPrivate = isPrivate;
         final Matcher matcher = ADDRESS_VALIDATION_REGEX.matcher(address.trim());
-        try {
-            block = new Block(matcher.group("BLOCK"));
-            street = new Street(matcher.group("STREET"));
-            unit = new Unit(matcher.group("UNIT"));
-            postalCode = new PostalCode(matcher.group("POSTALCODE"));
-        } catch (IllegalValueException ive) {
-            ive.getMessage();
-        }
+        block = new Block(matcher.group("BLOCK"));
+        street = new Street(matcher.group("STREET"));
+        unit = new Unit(matcher.group("UNIT"));
+        postalCode = new PostalCode(matcher.group("POSTALCODE"));
     }
 
     /**
