@@ -11,6 +11,7 @@ import javax.xml.bind.Unmarshaller;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -151,6 +152,10 @@ public class StorageFile {
 
     public String getPath() {
         return path.toString();
+    }
+
+    public File getFile() {        
+        return path.toFile();
     }
 
 }
