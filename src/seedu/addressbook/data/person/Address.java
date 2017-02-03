@@ -16,13 +16,13 @@ public class Address {
         public static final String EXAMPLE = "123";
         public static final String MESSAGE_BLOCK_CONSTRAINTS = "Address blocks should be only numbers with an optional letter at the end";
         public static final String BLOCK_VALIDATION_REGEX = "\\d+[a-zA-Z]?";
-        private String number;
+        private String value;
         
         public Block(String blkNum) throws IllegalValueException {
             if (!this.isValidBlock(blkNum)) {
                 throw new IllegalValueException(MESSAGE_BLOCK_CONSTRAINTS);
             }
-            number = blkNum;
+            value = blkNum;
         }
 
         public boolean isValidBlock(String test) {
@@ -30,7 +30,7 @@ public class Address {
         }
 
         public String getBlock() {
-            return number;
+            return value;
         }
 
     }
@@ -44,13 +44,13 @@ public class Address {
         public static final String EXAMPLE = "Clementi Ave 3";
         public static final String MESSAGE_STREET_CONSTRAINTS = "Address streets should only alphanumeric characters";
         public static final String STREET_VALIDATION_REGEX = ".+";
-        private String name;
+        private String value;
 
         public Street(String streetName) throws IllegalValueException {
             if (!this.isValidStreet(streetName)) {
                 throw new IllegalValueException(MESSAGE_STREET_CONSTRAINTS);
             }
-            name = streetName;
+            value = streetName;
         }
 
         public boolean isValidStreet(String test) {
@@ -58,7 +58,7 @@ public class Address {
         }
 
         public String getStreet() {
-            return name;
+            return value;
         }
     }
 
@@ -98,13 +98,13 @@ public class Address {
         public static final String EXAMPLE = "231534";
         public static final String MESSAGE_POSTAL_CODE_CONSTRAINTS = "Address postal codes should contain 6 digits";
         private static final String POSTAL_CODE_VALIDATION_REGEX = "\\d{6}";
-        private String numbers;
+        private String value;
 
         public PostalCode(String value) throws IllegalValueException {
             if (!this.isValidPostalCode(value)) {
                 throw new IllegalValueException(MESSAGE_POSTAL_CODE_CONSTRAINTS);
             }
-            numbers = value;
+            this.value = value;
         }
 
         public boolean isValidPostalCode(String test) {
@@ -112,11 +112,11 @@ public class Address {
         }
 
         public String getPostalCode() {
-            return numbers;
+            return value;
         }
     }
 
-    public static final String ADDRESS_DELIMITER = ",";
+    public static final String ADDRESS_DELIMITER = ", ";
     public static final String EXAMPLE = Block.EXAMPLE + ADDRESS_DELIMITER + Street.EXAMPLE + ADDRESS_DELIMITER
                                        + Unit.EXAMPLE + ADDRESS_DELIMITER + PostalCode.EXAMPLE;
     public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses must have format BLOCK, STREET, UNIT, POSTAL_CODE";

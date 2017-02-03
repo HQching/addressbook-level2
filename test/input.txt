@@ -28,8 +28,8 @@
 
   # should catch invalid args format
   add wrong args wrong args
-  add Valid Name 12345 e/valid@email.butNoPhonePrefix a/valid, address
-  add Valid Name p/12345 valid@email.butNoPrefix a/valid, address
+  add Valid Name 12345 e/valid@email.butNoPhonePrefix a/invalid, address
+  add Valid Name p/12345 valid@email.butNoPrefix a/invalid, address
   add Valid Name p/12345 e/valid@email.butNoAddressPrefix valid, address
   add Valid Name p/12345 e/valid@email.butNoTagPrefix a/valid, address t/goodTag noPrefixTag
   
