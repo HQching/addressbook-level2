@@ -83,5 +83,9 @@ public class Person implements ReadOnlyPerson {
     public String toString() {
         return getAsTextShowAll();
     }
+    
+    public String toStringWithoutTags() {
+        return getPrintableString(this.getName(), this.getPhone(), this.getEmail(), this.getAddress());
+    }
 
 }

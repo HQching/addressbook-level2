@@ -34,6 +34,17 @@ public interface ReadOnlyPerson {
     }
 
     /**
+     * Returns a concatenated version of the printable strings of each object.
+     */
+    default String getPrintableString(Printable... printables) {
+        StringBuilder fullString = new StringBuilder();
+        for (Printable p : printables) {
+            fullString.append(", ").append(p.getPrintableString());
+        }
+        return fullString.delete(0,2).toString();
+    }
+    
+    /**
      * Formats the person as text, showing all contact details.
      */
     default String getAsTextShowAll() {
