@@ -96,7 +96,10 @@ public class AddressBook {
         allTags.add(toAdd);
     }
     
-    public void addTagging(String operator, Person person, Tag tag) throws IllegalValueException {
+    /**
+     * Adds a tagging to the list of allTaggings present in the address book.
+     */
+    public void addTagging(String operator, Person person, Tag tag) {
         allTaggings.add(new Tagging(operator, person, tag));
     }
 
