@@ -211,7 +211,12 @@ public class Parser {
         }
     }
     
-    private Command prepareAddTag(String args) {
+    /**
+     * Parses arguments in the context of the add tag command.
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */private Command prepareAddTag(String args) {
         final Matcher matcher = TAG_FORMAT.matcher(args.trim());
         if (!matcher.matches()) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, 
@@ -231,7 +236,13 @@ public class Parser {
         
     }
     
-    private Command prepareDeleteTag(String args) {
+     /**
+      * Parses arguments in the context of the delete tag command.
+      *
+      * @param args full command args string
+      * @return the prepared command
+      */
+     private Command prepareDeleteTag(String args) {
         final Matcher matcher = TAG_FORMAT.matcher(args.trim());
         if (!matcher.matches()) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, 
