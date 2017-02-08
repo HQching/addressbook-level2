@@ -35,7 +35,6 @@ public class NameIsSimilarTest {
         assertSimilar(new Name("John"));
         assertSimilar(new Name("k"));
         assertSimilar(new Name("Smith John"));
-        assertSimilar(new Name("jo K SMITH "));
     }
 
     @Test
@@ -55,7 +54,9 @@ public class NameIsSimilarTest {
         // not similar at all
         assertNotSimilar(new Name("Mary Janes"));
         
-        
+        // subset of the name that is not a word by itself in the original name
+        assertNotSimilar(new Name("Oh"));
+        assertNotSimilar(new Name("m"));
         
         
     }

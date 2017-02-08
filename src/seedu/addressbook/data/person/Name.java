@@ -77,14 +77,23 @@ public class Name {
             return true;
         }
         
+        String[] thisNameParts = thisName.split("\\s+");
         String[] otherNameParts = otherName.split("\\s+");
+        int count = 0;
         for (String part : otherNameParts) {
-            if (!thisName.contains(part)) {
-                return false;
+            for (String p : thisNameParts) {
+                if (part.equals(p)) {
+                    count++;
+                    break;
+                }
             }
         }
+        if (count == otherNameParts.length) {
+            return true;
+        }
+                    
         
-        return true; 
+        return false; 
      }
 
 }
