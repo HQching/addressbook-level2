@@ -21,6 +21,7 @@ public class NameIsSimilarTest {
     public void nameIsSimilar() throws IllegalValueException {
         assertSimilar("John K Smith");
         assertSimilar("john k smith");
+        assertSimilar("JOHN K SMITH");
         
     }
     
