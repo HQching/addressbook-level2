@@ -31,6 +31,14 @@ public class NameIsSimilarTest {
         assertSimilar("K JoHN SMitH");
         assertSimilar("   john    smith   k   ");
         
+        // subset or superset
+        assertSimilar("John");
+        assertSimilar("jOHn Harry SMITH");
+        assertSimilar("Sally Smith");
+        assertSimilar("J K Rowling");
+        assertSimilar("Harry JOHN jOe Smith Tom K");
+        
+        
         
         
         
