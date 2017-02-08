@@ -149,6 +149,7 @@ public class AddressBook {
         return new UniqueTagList(allTags);
     }
     
+    /** Returns the ArrayList of allTaggings in the addressBook*/
     public ArrayList<Tagging> getAllTaggings() {
         return allTaggings;
     }

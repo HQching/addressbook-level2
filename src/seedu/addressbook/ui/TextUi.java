@@ -166,6 +166,9 @@ public class TextUi {
         return String.format(MESSAGE_INDEXED_LIST_ITEM, visibleIndex, listItem);
     }
     
+    /** Shows the list of added and deleted Taggings made by the user
+     * in the order they were called in that session of the program.
+     */
     public void showAllTaggings(ArrayList<Tagging> allTaggings) {
         for (Tagging t : allTaggings) {
             System.out.println(t.toString());
