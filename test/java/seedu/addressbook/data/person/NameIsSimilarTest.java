@@ -31,19 +31,19 @@ public class NameIsSimilarTest {
         assertSimilar(new Name("K JoHN SMitH"));
         assertSimilar(new Name("   john    smith   k   "));
 
-        // subset or superset
+        // subset 
         assertSimilar(new Name("John"));
-        assertSimilar(new Name("jOHn Harry SMITH"));
-        assertSimilar(new Name("Sally Smith"));
-        assertSimilar(new Name("J K Rowling"));
-        assertSimilar(new Name("Harry JOHN jOe Smith Tom K"));
-
+        assertSimilar(new Name("k"));
+        assertSimilar(new Name("Smith John"));
+        assertSimilar(new Name("jo K SMITH "));
     }
 
     @Test
     public void nameIsNotSimilar() throws IllegalValueException {
         // null 
         assertNotSimilar(null);
+        
+        
     }
 
     private void assertSimilar(Name other) {

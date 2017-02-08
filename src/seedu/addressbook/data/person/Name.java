@@ -79,12 +79,12 @@ public class Name {
         
         String[] otherNameParts = otherName.split("\\s+");
         for (String part : otherNameParts) {
-            if (thisName.contains(part)) {
-                return true;
+            if (!thisName.contains(part)) {
+                return false;
             }
         }
         
-        return false; 
+        return true; 
      }
 
 }
