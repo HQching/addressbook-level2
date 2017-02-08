@@ -70,9 +70,9 @@ public class Name {
             return true;
         }
         
-        String[] otherName = other.fullName.split(" ");
+        String[] otherName = other.fullName.toLowerCase().split(" ");
         for (String part : otherName) {
-            if (!this.fullName.contains(part)) {
+            if (!this.fullName.toLowerCase().contains(part)) {
                 return false;
             }
         }

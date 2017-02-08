@@ -27,8 +27,9 @@ public class NameIsSimilarTest {
         
         // different ordering
         assertSimilar("K Smith John");
-        assertSimilar("Smith K John");
-        assertSimilar("K John Smith");
+        assertSimilar("SmiTH k john");
+        assertSimilar("K JoHN SMitH");
+        
     }
     
    /* @Test
