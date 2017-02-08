@@ -19,9 +19,12 @@ public class NameIsSimilarTest {
     
     @Test
     public void nameIsSimilar() throws IllegalValueException {
+        // case insensitive name 
         assertSimilar("John K Smith");
         assertSimilar("john k smith");
         assertSimilar("JOHN K SMITH");
+        assertSimilar("jOhN k sMITh");
+        
         
     }
     

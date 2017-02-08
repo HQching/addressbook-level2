@@ -62,7 +62,8 @@ public class Name {
     
     /**
      * Returns true of the other name is very similar to this name.
-     * Two names are considered similar if ...
+     * Two names are considered similar if exactly the same but in different cases, 
+     * ...
      */
      public boolean isSimilar(Name other) {
         if (this.equals(other)) {
