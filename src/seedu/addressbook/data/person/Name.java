@@ -62,8 +62,8 @@ public class Name {
     
     /**
      * Returns true of the other name is very similar to this name.
-     * Two names are considered similar if exactly the same but in different cases, 
-     * ...
+     * Two names are considered similar if they only have different cases, are reordered,
+     * one is a subset of the other or is the initials (partial or whole) of the other.
      */
      public boolean isSimilar(Name other) {
         if (other == null) {
@@ -88,11 +88,13 @@ public class Name {
         return false;
      }
 
-    private boolean isEqualCaseInsensitive(String thisName, String otherName) {
+     /** Returns true of the other name is case insensitively equal to this name. */
+     private boolean isEqualCaseInsensitive(String thisName, String otherName) {
         return thisName.equals(otherName);
     }
     
-    private boolean isReorderedOrSubset(String[] thisNameParts, String[] otherNameParts) {
+     /** Returns true of the other name is reordered from or a subset of the current name. */
+     private boolean isReorderedOrSubset(String[] thisNameParts, String[] otherNameParts) {
         int count = 0;
         for (String part : otherNameParts) {
             for (String p : thisNameParts) {
@@ -105,6 +107,7 @@ public class Name {
         return (count == otherNameParts.length);
     }
     
+    /** Returns true of the other name is the part or whole initials of the current name. */
     private boolean isInitials(String[] thisNameParts, String otherName) {
         String initials = "";
         for (String p : thisNameParts) {
