@@ -68,6 +68,10 @@ public class Name {
         if (this.equals(other)) {
             return true;
         }
+        if (this.fullName.toLowerCase().equals(other.fullName)) {
+            return true;
+        }
+        
         return false; 
      }
 

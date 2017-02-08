@@ -20,6 +20,7 @@ public class NameIsSimilarTest {
     @Test
     public void nameIsSimilar() throws IllegalValueException {
         assertSimilar("John K Smith");
+        assertSimilar("john k smith");
         
     }
     
