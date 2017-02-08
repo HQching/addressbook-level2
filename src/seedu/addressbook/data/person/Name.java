@@ -66,13 +66,16 @@ public class Name {
      * ...
      */
      public boolean isSimilar(Name other) {
-        if (this.fullName.toLowerCase().equals(other.fullName.toLowerCase())) {
+        String thisName = this.fullName.toLowerCase();
+        String otherName = other.fullName.toLowerCase();
+        
+        if (thisName.equals(otherName)) {
             return true;
         }
         
-        String[] otherName = other.fullName.toLowerCase().split(" ");
-        for (String part : otherName) {
-            if (!this.fullName.toLowerCase().contains(part)) {
+        String[] otherNameParts = otherName.split("\\s+");
+        for (String part : otherNameParts) {
+            if (!thisName.contains(part)) {
                 return false;
             }
         }

@@ -29,6 +29,11 @@ public class NameIsSimilarTest {
         assertSimilar("K Smith John");
         assertSimilar("SmiTH k john");
         assertSimilar("K JoHN SMitH");
+        assertSimilar("   john    smith   k   ");
+        
+        
+        
+        
         
     }
     
