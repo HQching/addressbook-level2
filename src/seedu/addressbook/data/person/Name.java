@@ -91,9 +91,17 @@ public class Name {
         if (count == otherNameParts.length) {
             return true;
         }
-                    
         
-        return false; 
+        String initials = "";
+        for (String p : thisNameParts) {
+            initials += p.substring(0, 1);
+        }
+        if (initials.contains(otherName)) {
+            return true;
+        }
+        
+      
+        return false;
      }
-
 }
+        

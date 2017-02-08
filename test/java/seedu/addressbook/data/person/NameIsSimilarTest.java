@@ -35,6 +35,12 @@ public class NameIsSimilarTest {
         assertSimilar(new Name("John"));
         assertSimilar(new Name("k"));
         assertSimilar(new Name("Smith John"));
+        
+        // first letter of each word or the initials 
+        assertSimilar(new Name("Jks"));
+        assertSimilar(new Name("s"));
+        assertSimilar(new Name("kS"));
+        assertSimilar(new Name("J"));
     }
 
     @Test
@@ -57,6 +63,11 @@ public class NameIsSimilarTest {
         // subset of the name that is not a word by itself in the original name
         assertNotSimilar(new Name("Oh"));
         assertNotSimilar(new Name("m"));
+        
+        // initials in the wrong order 
+        assertNotSimilar(new Name("jsk"));
+        assertNotSimilar(new Name("sjk"));
+        assertNotSimilar(new Name("kj"));
         
         
     }
