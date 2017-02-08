@@ -70,7 +70,14 @@ public class Name {
             return true;
         }
         
-        return false; 
+        String[] otherName = other.fullName.split(" ");
+        for (String part : otherName) {
+            if (!this.fullName.contains(part)) {
+                return false;
+            }
+        }
+        
+        return true; 
      }
 
 }
