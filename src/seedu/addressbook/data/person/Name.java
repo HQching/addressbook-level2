@@ -73,35 +73,44 @@ public class Name {
         String thisName = this.fullName.toLowerCase();
         String otherName = other.fullName.toLowerCase();
         
-        if (thisName.equals(otherName)) {
-            return true;
-        }
-        
         String[] thisNameParts = thisName.split("\\s+");
         String[] otherNameParts = otherName.split("\\s+");
+        
+        if (isEqualCaseInsensitive(thisName, otherName)) {
+            return true;
+        }
+        if (isReorderedOrSubset(thisNameParts, otherNameParts)) {
+            return true;
+        }
+        if(isInitials(thisNameParts, otherName)) {
+            return true;
+        }
+        return false;
+     }
+
+    private boolean isEqualCaseInsensitive(String thisName, String otherName) {
+        return thisName.equals(otherName);
+    }
+    
+    private boolean isReorderedOrSubset(String[] thisNameParts, String[] otherNameParts) {
         int count = 0;
         for (String part : otherNameParts) {
             for (String p : thisNameParts) {
-                if (part.equals(p)) {
+                if (isEqualCaseInsensitive(part, p)) {
                     count++;
                     break;
                 }
             }
         }
-        if (count == otherNameParts.length) {
-            return true;
-        }
-        
+        return (count == otherNameParts.length);
+    }
+    
+    private boolean isInitials(String[] thisNameParts, String otherName) {
         String initials = "";
         for (String p : thisNameParts) {
             initials += p.substring(0, 1);
         }
-        if (initials.contains(otherName)) {
-            return true;
-        }
-        
-      
-        return false;
-     }
+        return initials.contains(otherName);
+    }
 }
         
