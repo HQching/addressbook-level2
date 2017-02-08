@@ -66,6 +66,10 @@ public class Name {
      * ...
      */
      public boolean isSimilar(Name other) {
+        if (other == null) {
+            return false;
+        }
+        
         String thisName = this.fullName.toLowerCase();
         String otherName = other.fullName.toLowerCase();
         

@@ -9,53 +9,49 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
 public class NameIsSimilarTest {
-    
+
     private Name name;
-    
+
     @Before
     public void setUp() throws IllegalValueException {
         name = new Name("John K Smith");
     }
-    
+
     @Test
     public void nameIsSimilar() throws IllegalValueException {
-        // case insensitive name 
-        assertSimilar("John K Smith");
-        assertSimilar("john k smith");
-        assertSimilar("JOHN K SMITH");
-        assertSimilar("jOhN k sMITh");
-        
+        // case insensitive name
+        assertSimilar(new Name("John K Smith"));
+        assertSimilar(new Name("john k smith"));
+        assertSimilar(new Name("JOHN K SMITH"));
+        assertSimilar(new Name("jOhN k sMITh"));
+
         // different ordering
-        assertSimilar("K Smith John");
-        assertSimilar("SmiTH k john");
-        assertSimilar("K JoHN SMitH");
-        assertSimilar("   john    smith   k   ");
-        
+        assertSimilar(new Name("K Smith John"));
+        assertSimilar(new Name("SmiTH k john"));
+        assertSimilar(new Name("K JoHN SMitH"));
+        assertSimilar(new Name("   john    smith   k   "));
+
         // subset or superset
-        assertSimilar("John");
-        assertSimilar("jOHn Harry SMITH");
-        assertSimilar("Sally Smith");
-        assertSimilar("J K Rowling");
-        assertSimilar("Harry JOHN jOe Smith Tom K");
-        
-        
-        
-        
-        
-        
+        assertSimilar(new Name("John"));
+        assertSimilar(new Name("jOHn Harry SMITH"));
+        assertSimilar(new Name("Sally Smith"));
+        assertSimilar(new Name("J K Rowling"));
+        assertSimilar(new Name("Harry JOHN jOe Smith Tom K"));
+
     }
-    
-   /* @Test
+
+    @Test
     public void nameIsNotSimilar() throws IllegalValueException {
-        assertNotSimilar("Insert name to compare here");
-    }*/
-    
-    private void assertSimilar(String other) throws IllegalValueException {
-        assertTrue(name.isSimilar(new Name(other)));
+        // null 
+        assertNotSimilar(null);
     }
-    
-    /*private void assertNotSimilar(String other) throws IllegalValueException {
-        assertFalse(name.isSimilar(new Name(other)));
-    }*/
+
+    private void assertSimilar(Name other) {
+        assertTrue(name.isSimilar(other));
+    }
+
+    private void assertNotSimilar(Name other) {
+        assertFalse(name.isSimilar(other));
+    }
 
 }
