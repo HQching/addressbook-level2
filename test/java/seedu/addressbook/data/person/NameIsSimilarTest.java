@@ -43,6 +43,20 @@ public class NameIsSimilarTest {
         // null 
         assertNotSimilar(null);
         
+        // wrong spacing or spelling
+        assertNotSimilar(new Name("johnK Smiht"));
+        assertNotSimilar(new Name("ksmit hjohn"));
+        
+        // having part of the name similar
+        assertNotSimilar(new Name("Sally Smith"));
+        assertNotSimilar(new Name("J K Rowling"));
+        assertNotSimilar(new Name("John Smith Harry JR"));
+        
+        // not similar at all
+        assertNotSimilar(new Name("Mary Janes"));
+        
+        
+        
         
     }
 
