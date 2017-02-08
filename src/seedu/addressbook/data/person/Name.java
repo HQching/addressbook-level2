@@ -54,10 +54,19 @@ public class Name {
                 || (other instanceof Name // instanceof handles nulls
                 && this.fullName.equals(((Name) other).fullName)); // state check
     }
-
+    
     @Override
     public int hashCode() {
         return fullName.hashCode();
     }
+    
+    /**
+     * Returns true of the other name is very similar to this name.
+     * Two names are considered similar if ...
+     */
+     public boolean isSimilar(Name other) {
+        return false; 
+         
+     }
 
 }
