@@ -1,5 +1,6 @@
 package seedu.addressbook.data;
 
+import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.*;
 import seedu.addressbook.data.person.UniquePersonList.*;
 import seedu.addressbook.data.tag.UniqueTagList;
@@ -93,6 +94,10 @@ public class AddressBook {
      */
     public void addTag(Tag toAdd) throws DuplicateTagException {
         allTags.add(toAdd);
+    }
+    
+    public void addTagging(String operator, Person person, Tag tag) throws IllegalValueException {
+        allTaggings.add(new Tagging(operator, person, tag));
     }
 
     /**
