@@ -19,21 +19,21 @@ public class NameIsSimilarTest {
     
     @Test
     public void nameIsSimilar() throws IllegalValueException {
-        assertSimilar("Insert name to compare here");
+        assertSimilar("John K Smith");
         
     }
     
-    @Test
+   /* @Test
     public void nameIsNotSimilar() throws IllegalValueException {
         assertNotSimilar("Insert name to compare here");
-    }
+    }*/
     
     private void assertSimilar(String other) throws IllegalValueException {
         assertTrue(name.isSimilar(new Name(other)));
     }
     
-    private void assertNotSimilar(String other) throws IllegalValueException {
+    /*private void assertNotSimilar(String other) throws IllegalValueException {
         assertFalse(name.isSimilar(new Name(other)));
-    }
+    }*/
 
 }
