@@ -16,7 +16,7 @@ public class Person implements ReadOnlyPerson {
     private Address address;
     
     private int sequenceNumber;
-    public static int nextSequenceNumber = 1;
+    private static int nextSequenceNumber = 1;
 
     private final UniqueTagList tags;
     /**
@@ -62,6 +62,11 @@ public class Person implements ReadOnlyPerson {
     @Override
     public UniqueTagList getTags() {
         return new UniqueTagList(tags);
+    }
+    
+    /** Gets the sequence number that the person was added into the address book.  */
+    public int getSequenceNumber() {
+        return this.sequenceNumber;
     }
 
     /**
