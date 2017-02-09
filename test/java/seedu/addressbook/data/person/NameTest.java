@@ -8,7 +8,7 @@ import seedu.addressbook.data.exception.IllegalValueException;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
-public class NameIsSimilarTest {
+public class NameTest {
 
     private Name name;
 
@@ -18,25 +18,30 @@ public class NameIsSimilarTest {
     }
 
     @Test
-    public void nameIsSimilar() throws IllegalValueException {
-        // case insensitive name
+    public void isSimilar_differentCase_returnsTrue() throws IllegalValueException {
         assertSimilar(new Name("John K Smith"));
         assertSimilar(new Name("john k smith"));
         assertSimilar(new Name("JOHN K SMITH"));
         assertSimilar(new Name("jOhN k sMITh"));
-
-        // different ordering
+    }
+    
+    @Test
+    public void isSimilar_differentOrder_returnsTrue() throws IllegalValueException {
         assertSimilar(new Name("K Smith John"));
         assertSimilar(new Name("SmiTH k john"));
         assertSimilar(new Name("K JoHN SMitH"));
         assertSimilar(new Name("   john    smith   k   "));
+    }
 
-        // subset 
+    @Test
+    public void isSimilar_subsetOfFullName_returnsTrue() throws IllegalValueException {
         assertSimilar(new Name("John"));
         assertSimilar(new Name("k"));
         assertSimilar(new Name("Smith John"));
-        
-        // first letter of each word or the initials 
+    }
+    
+    @Test
+    public void isSimilar_initialsOrSubsetOfInitials_returnsTrue() throws IllegalValueException {  
         assertSimilar(new Name("Jks"));
         assertSimilar(new Name("s"));
         assertSimilar(new Name("kS"));
@@ -44,34 +49,43 @@ public class NameIsSimilarTest {
     }
 
     @Test
-    public void nameIsNotSimilar() throws IllegalValueException {
-        // null 
+    public void isSimilar_null_returnsFalse() throws IllegalValueException {
         assertNotSimilar(null);
-        
-        // wrong spacing or spelling
+    }
+    
+    @Test
+    public void isSimilar_wrongSpellingOrSpacing_returnsFalse() throws IllegalValueException {  
         assertNotSimilar(new Name("johnK Smiht"));
         assertNotSimilar(new Name("ksmit hjohn"));
-        
+    }
+    
+    @Test
+    public void isSimilar_subsetButWithExtraWords_returnsFalse() throws IllegalValueException { 
         // having part of the name similar
         assertNotSimilar(new Name("Sally Smith"));
         assertNotSimilar(new Name("J K Rowling"));
         assertNotSimilar(new Name("John Smith Harry JR"));
-        
-        // not similar at all
+    }
+    
+    @Test
+    public void isSimilar_differentName_returnsFalse() throws IllegalValueException {
         assertNotSimilar(new Name("Mary Janes"));
-        
-        // subset of the name that is not a word by itself in the original name
+    }
+    
+    @Test
+    public void isSimilar_subsetOfAWordInOriginalName_returnsFalse() throws IllegalValueException {    
         assertNotSimilar(new Name("Oh"));
         assertNotSimilar(new Name("m"));
+    }
         
-        // initials in the wrong order 
+    @Test
+    public void isSimilar_initialsInWrongOrder_returnsFalse() throws IllegalValueException {
         assertNotSimilar(new Name("jsk"));
         assertNotSimilar(new Name("sjk"));
         assertNotSimilar(new Name("kj"));
-        
-        
     }
-
+        
+ 
     private void assertSimilar(Name other) {
         assertTrue(name.isSimilar(other));
     }
