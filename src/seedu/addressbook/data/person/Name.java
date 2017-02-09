@@ -76,16 +76,8 @@ public class Name {
         String[] thisNameParts = thisName.split("\\s+");
         String[] otherNameParts = otherName.split("\\s+");
         
-        if (isEqualCaseInsensitive(thisName, otherName)) {
-            return true;
-        }
-        if (isReorderedOrSubset(thisNameParts, otherNameParts)) {
-            return true;
-        }
-        if(isInitials(thisNameParts, otherName)) {
-            return true;
-        }
-        return false;
+        return (isEqualCaseInsensitive(thisName, otherName) || isReorderedOrSubset(thisNameParts, otherNameParts) ||
+                 isInitials(thisNameParts, otherName)); 
      }
 
      /** Returns true of the other name is case insensitively equal to this name. */
@@ -109,9 +101,10 @@ public class Name {
     
     /** Returns true of the other name is the part or whole initials of the current name. */
     private boolean isInitials(String[] thisNameParts, String otherName) {
+        final int NAME_INITIALS_INDEX = 0;
         String initials = "";
         for (String p : thisNameParts) {
-            initials += p.substring(0, 1);
+            initials += p.substring(NAME_INITIALS_INDEX, NAME_INITIALS_INDEX + 1);
         }
         return initials.contains(otherName);
     }
